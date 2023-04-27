@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Selección de nivel de programación</title>
+    <script>
+        function mostrarSeleccion() {
+            var opcionSeleccionada = document.querySelector('input[name="nivel"]:checked').value;
+            var mensaje = "No has seleccionado ninguna opción.";
+
+            if (opcionSeleccionada === "opcion1") {
+                mensaje = "Has seleccionado la opción 1. ¡Sigue aprendiendo, estás en el camino correcto!";
+            } else if (opcionSeleccionada === "opcion2") {
+                mensaje = "Has seleccionado la opción 2. ¡Excelente, continúa mejorando tus habilidades!";
+            }
+
+            alert(mensaje);
+        }
+    </script>
+</head>
+<body>
+    <h3>Selecciona tu nivel de programación:</h3>
+    <input type="radio" name="nivel" value="opcion1">Opción 1 (Básico)<br>
+    <input type="radio" name="nivel" value="opcion2">Opción 2 (Fundamental)<br>
+    <br>
+    <button onclick="mostrarSeleccion()">Mostrar selección</button>
+</body>
+</html>

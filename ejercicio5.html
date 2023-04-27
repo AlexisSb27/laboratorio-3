@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Casa de Cambio</title>
+    <script>
+        function calcularTotal() {
+            var cantidad = parseFloat(document.getElementById("cantidad").value);
+            var monedaOrigen = document.getElementById("moneda-origen").value;
+            var monedaDestino = document.getElementById("moneda-destino").value;
+            var tipoCambio = obtenerTipoCambio(monedaOrigen, monedaDestino);
+            var total = cantidad * tipoCambio;
+            
+            alert("Total a recibir: " + total.toFixed(2) + " " + monedaDestino);
+        }
+        
+        function obtenerTipoCambio(monedaOrigen, monedaDestino) {
+            // Aquí puedes agregar la lógica para obtener el tipo de cambio entre las monedas
+            // Por simplicidad, utilizaremos valores fijos para el ejemplo
+            var tipoCambioDolar = 3.8;
+            var tipoCambioSoles = 1;
+            var tipoCambioEuros = 4.5;
+            
+            if (monedaOrigen === "dolar" && monedaDestino === "soles") {
+                return tipoCambioDolar;
+            } else if (monedaOrigen === "dolar" && monedaDestino === "euros") {
+                return tipoCambioEuros;
+            } else if (monedaOrigen === "soles" && monedaDestino === "dolar") {
+                return 1 / tipoCambioDolar;
+            } else if (monedaOrigen === "soles" && monedaDestino === "euros") {
+                return tipoCambioEuros / tipoCambioDolar;
+            } else if (monedaOrigen === "euros" && monedaDestino === "dolar") {
+                return 1 / tipoCambioEuros;
+            } else if (monedaOrigen === "euros" && monedaDestino === "soles") {
+                return tipoCambioDolar / tipoCambioEuros;
+            } else {
+                return 1; // Tipo de cambio 1:1 si las monedas son las mismas
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Casa de Cambio</h3>
+    <form>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" step="0.01" required>
+        <br><br>
+        <label for="moneda-origen">Moneda a cambiar:</label>
+        <select id="moneda-origen">
+            <option value="dolar">Dólar</option>
+            <option value="soles">Soles</option>
+            <option value="euros">Euros</option>
+        </select>
+        <br><br>
+        <label for="moneda-destino">Moneda a recibir:</label>
+        <select id="moneda-destino">
+            <option value="dolar">Dólar</option>
+            <option value="soles">Soles</option>
+            <option value="euros">Euros</option>
+        </select>
+        <br><br>
+        <button onclick="calcularTotal()">Calcular Total
